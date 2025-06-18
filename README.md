@@ -9,7 +9,7 @@ Hyperion Plugin Core provides the base classes and interfaces needed to develop 
 ## Installation
 
 ```bash
-npm install hyperion-plugin-core
+npm install @eosrio/hyperion-plugin-core
 ```
 
 ## Requirements
@@ -22,25 +22,25 @@ npm install hyperion-plugin-core
 ### Creating a Basic Plugin
 
 ```typescript
-import { HyperionPlugin, HyperionAction, HyperionDelta } from 'hyperion-plugin-core';
+import { HyperionPlugin, HyperionAction, HyperionDelta } from '@eosrio/hyperion-plugin-core';
 import { FastifyInstance } from 'fastify';
 
 class MyCustomPlugin extends HyperionPlugin {
   constructor(config?: any) {
     super(config);
-    
+
     // Set plugin properties
     this.internalPluginName = 'my-custom-plugin';
     this.indexerPlugin = true;  // Set to true if this plugin processes indexer data
     this.apiPlugin = true;      // Set to true if this plugin adds API routes
-    
+
     // Register action handlers
     this.actionHandlers.push({
       action: 'transfer',
       contract: 'eosio.token',
       handler: this.handleTransfer.bind(this)
     });
-    
+
     // Register delta handlers
     this.deltaHandlers.push({
       table: 'accounts',
@@ -48,7 +48,7 @@ class MyCustomPlugin extends HyperionPlugin {
       handler: this.handleAccountDelta.bind(this)
     });
   }
-  
+
   // Implement required abstract method
   addRoutes(server: FastifyInstance): void {
     server.get('/my-plugin/data', async (request, reply) => {
@@ -56,13 +56,13 @@ class MyCustomPlugin extends HyperionPlugin {
       return { success: true, data: 'Your plugin data' };
     });
   }
-  
+
   // Custom action handler
   async handleTransfer(action: HyperionAction): Promise<void> {
     // Process transfer action
     console.log(`Transfer: ${action.act.data.from} -> ${action.act.data.to}`);
   }
-  
+
   // Custom delta handler
   async handleAccountDelta(delta: HyperionDelta): Promise<void> {
     // Process account delta
@@ -132,6 +132,22 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+## For Maintainers
+
+### Publishing the Package
+
+To publish a new version of the package to npm:
+
+1. Update the version in `package.json`
+2. Update the `CHANGELOG.md` with the changes
+3. Run the publish script:
+
+```bash
+npm run publish
+```
+
+This will automatically build the package and publish it to npm with public access.
 
 ## About
 

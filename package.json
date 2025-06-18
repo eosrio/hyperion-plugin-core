@@ -1,5 +1,5 @@
 {
-  "name": "hyperion-plugin-core",
+  "name": "@eosrio/hyperion-plugin-core",
   "version": "0.1.0",
   "description": "A core library for developing plugins for Hyperion - a scalable Full History API Solution for Antelope-based blockchains",
   "homepage": "https://github.com/eosrio/hyperion-plugin-core#readme",
@@ -18,7 +18,9 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish --access public"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
