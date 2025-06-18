@@ -1,0 +1,44 @@
+{
+  "name": "hyperion-plugin-core",
+  "version": "0.1.0",
+  "description": "A core library for developing plugins for Hyperion - a scalable Full History API Solution for Antelope-based blockchains",
+  "homepage": "https://github.com/eosrio/hyperion-plugin-core#readme",
+  "bugs": {
+    "url": "https://github.com/eosrio/hyperion-plugin-core/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eosrio/hyperion-plugin-core.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "EOS Rio",
+    "url": "https://eosrio.io"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "fastify": "^5.4.0"
+  },
+  "keywords": [
+    "hyperion",
+    "eosio",
+    "antelope",
+    "blockchain",
+    "history",
+    "api",
+    "plugin",
+    "extension"
+  ],
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ]
+}
